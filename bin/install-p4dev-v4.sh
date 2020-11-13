@@ -387,10 +387,10 @@ cd PI
 git submodule update --init --recursive
 git log -n 1
 ./autogen.sh
-./configure --with-proto --without-internal-rpc --without-cli --without-bmv2
+./configure --with-proto --without-internal-rpc --with-cli --without-bmv2 --with-sysrepo
 # Output I saw:
 #Features recap ......................................
-#Use sysrepo gNMI implementation .............. : no
+#Use sysrepo gNMI implementation .............. : yes
 #Compile demo_grpc ............................ : no
 #
 #Features recap ......................................
@@ -398,7 +398,7 @@ git log -n 1
 #Compile C++ frontend ......................... : yes
 #Compile p4runtime.proto and associated fe .... : yes
 #Compile internal RPC ......................... : no
-#Compile PI C CLI ............................. : no
+#Compile PI C CLI ............................. : yes
 make
 sudo make install
 
@@ -459,7 +459,7 @@ sudo make install
 cd targets/simple_switch_grpc
 ./autogen.sh
 # Remove 'CXXFLAGS ...' part to disable debug
-./configure --with-thrift 'CXXFLAGS=-O0 -g'
+./configure --with-thrift --with-sysrepo 'CXXFLAGS=-O0 -g'
 # I saw the following near end of output of 'configure' command:
 #Features recap ......................
 #With Sysrepo .................. : no
